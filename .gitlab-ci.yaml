@@ -1,0 +1,35 @@
+stages:
+  - test
+  - build
+  - docker
+
+
+test:
+  image: maven:3.9-eclipse-temurin-17
+
+  script:
+    - mvn test
+
+build:
+  image: maven:3.9-eclipse-temurin-17
+
+  script:
+    - mvn clean package -DskipTests
+
+  artifacts:
+    paths:
+      - target/*.jar
+
+docker:
+  image: docker:cli
+
+  services:
+    - docker:dind
+
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+
+  script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+    - docker build -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
