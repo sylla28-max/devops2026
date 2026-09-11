@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestion des étudiants</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        🎓 Student<span>Manager</span>
+    </div>
+
+    <nav>
+        <a href="#">Accueil</a>
+        <a href="#students">Étudiants</a>
+        <a href="#about">À propos</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div>
+
+            <p class="badge">
+                GESTION ACADÉMIQUE
+            </p>
+
+            <h1>
+                Bienvenue sur<br>
+                <span>Student Manager</span>
+            </h1>
+
+            <p class="description">
+                Une interface simple et moderne pour gérer les étudiants,
+                consulter leurs informations et organiser vos données.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#students" class="btn primary">
+                    Voir les étudiants
+                </a>
+
+                <button
+                    class="btn secondary"
+                    onclick="openForm()">
+
+                    + Ajouter
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="icon">
+                🎓
+            </div>
+
+            <h2>
+                Gestion simple
+            </h2>
+
+            <p>
+                Créez, consultez, modifiez et supprimez
+                facilement vos étudiants.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATISTIQUES -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <span>👨‍🎓</span>
+
+            <div>
+
+                <h2 id="totalStudents">
+                    0
+                </h2>
+
+                <p>
+                    Étudiants
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>📚</span>
+
+            <div>
+
+                <h2>
+                    12
+                </h2>
+
+                <p>
+                    Classes
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>🏫</span>
+
+            <div>
+
+                <h2>
+                    04
+                </h2>
+
+                <p>
+                    Départements
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LISTE DES ETUDIANTS -->
+
+    <section
+        id="students"
+        class="students-section">
+
+        <div class="section-title">
+
+            <div>
+
+                <p class="badge">
+                    LISTE
+                </p>
+
+                <h2>
+                    Nos étudiants
+                </h2>
+
+            </div>
+
+
+            <button
+                class="refresh"
+                onclick="loadStudents()">
+
+                ↻ Actualiser
+
+            </button>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Nom
+                        </th>
+
+                        <th>
+                            Prénom
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="studentTable">
+
+                    <tr>
+
+                        <td
+                            colspan="4"
+                            class="loading">
+
+                            Chargement des étudiants...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer id="about">
+
+    <p>
+        © 2026 StudentManager — Gestion des étudiants
+    </p>
+
+</footer>
+
+
+<!-- MODAL AJOUT -->
+
+<div
+    id="modal"
+    class="modal">
+
+    <div class="modal-content">
+
+        <button
+            class="close"
+            onclick="closeForm()">
+
+            ×
+
+        </button>
+
+
+        <h2>
+            Ajouter un étudiant
+        </h2>
+
+        <p>
+            Remplissez les informations ci-dessous.
+        </p>
+
+
+        <form onsubmit="addStudent(event)">
+
+            <label>
+                Nom
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Ex : Sylla"
+                required
+            >
+
+
+            <label>
+                Prénom
+            </label>
+
+            <input
+                type="text"
+                id="prenom"
+                placeholder="Ex : Abdoulaye"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="btn primary full">
+
+                Ajouter l'étudiant
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
